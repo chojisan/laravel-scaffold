@@ -22,6 +22,17 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 
+## Installation
+
+```
+composer install
+
+php artisan migrate
+
+npm install
+```
+
+
 ## Composer Packages
 
 - [nWidart/laravel-modules](https://github.com/nWidart/laravel-modules)
