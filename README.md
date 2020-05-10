@@ -35,6 +35,7 @@ npm install
 
 ## Composer Packages
 
+- [laravel/passport](https://github.com/laravel/passport)
 - [nWidart/laravel-modules](https://github.com/nWidart/laravel-modules)
 
 
