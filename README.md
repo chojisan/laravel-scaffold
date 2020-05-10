@@ -37,7 +37,7 @@ npm install
 
 - [laravel/passport](https://github.com/laravel/passport)
 - [nWidart/laravel-modules](https://github.com/nWidart/laravel-modules)
-
+- [spatie/laravel-permission](https://docs.spatie.be/laravel-permission/v3/introduction/)
 
 ## NPM Packages
 
