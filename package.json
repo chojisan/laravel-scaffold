@@ -29,6 +29,8 @@
         "chart.js": "^2.9.3",
         "js-cookie": "^2.2.1",
         "moment": "^2.25.3",
-        "nouislider": "^14.4.0"
+        "nouislider": "^14.5.0",
+        "vue-chartjs": "^3.5.0",
+        "vue2-transitions": "^0.3.0"
     }
 }
