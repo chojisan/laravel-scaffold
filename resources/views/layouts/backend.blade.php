@@ -14,8 +14,8 @@
   <!-- Fonts -->
 
   <!-- Icons -->
-  <link href="./vendor/nucleo/css/nucleo.css" rel="stylesheet" />
-  <link href="./vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <link href="{{ asset('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet" />
+  <link href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
 
   <!-- CSS Files -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -24,16 +24,20 @@
   @stack('css')
 </head>
 
-<body class="">
+<body class="bg-default">
     <div id="app">
         <!-- Sidenav -->
-        @include('partials.sidenav')
+        @if (\Request::is('backend/*'))
+            @include('partials.sidenav')
+        @endif
 
         <!-- Main content -->
         @yield('content')
 
         <!-- Footer -->
-        @include('partials.footer')
+        @if (\Request::is('backend/*'))
+            @include('partials.footer')
+        @endif
     </div>
 
     <!-- Scripts -->
