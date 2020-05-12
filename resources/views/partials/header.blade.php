@@ -1,7 +1,4 @@
-
-
-
-        <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
+<base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
         <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
               <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
@@ -79,5 +76,5 @@
                     </stats-card>
                 </div>
             </div>
-        </base-header>
+</base-header>
 

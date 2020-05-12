@@ -30,18 +30,7 @@
         @include('partials.sidenav')
 
         <!-- Main content -->
-        <div class="main-content" id="panel">
-            <!-- Topnav -->
-            @include('partials.topnav')
-
-            <!-- Header -->
-            @include('partials.header')
-
-            <!-- Page content -->
-            <div class="container-fluid mt--6">
-                @yield('content')
-            </div>
-        </div>
+        @yield('content')
 
         <!-- Footer -->
         @include('partials.footer')
