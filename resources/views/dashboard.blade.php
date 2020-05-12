@@ -2,7 +2,7 @@
 
 @section('content')
 <dashboard-view inline-template>
-    <div class="main-content" id="panel">
+    <div>
         <dashboard-navbar></dashboard-navbar>
 
         <base-header type="primary" class="pb-6 pb-8 pt-5 pt-md-8">

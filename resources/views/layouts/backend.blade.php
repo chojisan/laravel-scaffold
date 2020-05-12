@@ -24,7 +24,7 @@
   @stack('css')
 </head>
 
-<body class="bg-default">
+<body class="{{ $class ?? '' }}">
     <div id="app">
         <!-- Sidenav -->
         @if (\Request::is('backend/*'))
@@ -32,11 +32,18 @@
         @endif
 
         <!-- Main content -->
-        @yield('content')
+        <div class="main-content" id="panel">
+            @yield('content')
 
-        <!-- Footer -->
-        @if (\Request::is('backend/*'))
-            @include('partials.footer')
+            <!-- Admin Footer -->
+            @if (\Request::is('backend/*'))
+                @include('partials.footers.admin')
+            @endif
+        </div>
+
+        <!-- Site Footer -->
+        @if (!\Request::is('backend/*'))
+            @include('partials.footers.site')
         @endif
     </div>
 

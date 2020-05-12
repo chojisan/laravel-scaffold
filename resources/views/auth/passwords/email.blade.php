@@ -1,27 +1,9 @@
-@extends('layouts.backend')
+@extends('layouts.backend', ['class' => 'bg-default'])
 
 @section('content')
-<!-- Main content -->
-<div class="main-content">
-
+<div>
     <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
-        <div class="container">
-          <div class="header-body text-center mb-7">
-            <div class="row justify-content-center">
-              <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                <h1 class="text-white">Reset account</h1>
-                <p class="text-lead text-white">Please input a valid registered email address.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="separator separator-bottom separator-skew zindex-100">
-          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-          </svg>
-        </div>
-    </div>
+    @include('partials.headers.guest')
 
     <!-- Page content -->
     <div class="container mt--8 pb-5">
@@ -49,7 +31,7 @@
                                   <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                   </div>
-                                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('Email Address') }}">
 
                                   @error('email')
                                         <span class="invalid-feedback" role="alert">

@@ -1,26 +1,9 @@
-@extends('layouts.backend')
+@extends('layouts.backend', ['class' => 'bg-default'])
 
 @section('content')
-<!-- Main content -->
-<div class="main-content">
+<div>
     <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
-        <div class="container">
-          <div class="header-body text-center mb-7">
-            <div class="row justify-content-center">
-              <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                <h1 class="text-white">Welcome!</h1>
-                <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="separator separator-bottom separator-skew zindex-100">
-          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-          </svg>
-        </div>
-      </div>
+    @include('partials.headers.guest')
 
       <!-- Page content -->
       <div class="container mt--8 pb-5">
@@ -28,15 +11,15 @@
             <div class="col-lg-6 col-md-8">
                 <div class="card bg-secondary border-0 mb-0">
                     <div class="card-header bg-transparent pb-5">
-                        <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
+                        <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>
                         <div class="btn-wrapper text-center">
                           <a href="#" class="btn btn-neutral btn-icon">
                             <span class="btn-inner--icon"><img src="img/icons/github.svg"></span>
-                            <span class="btn-inner--text">Github</span>
+                            <span class="btn-inner--text">{{ __('Github') }}</span>
                           </a>
                           <a href="#" class="btn btn-neutral btn-icon">
                             <span class="btn-inner--icon"><img src="img/icons/google.svg"></span>
-                            <span class="btn-inner--text">Google</span>
+                            <span class="btn-inner--text">{{ __('Google') }}</span>
                           </a>
                         </div>
                       </div>
@@ -53,7 +36,7 @@
                                   <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                   </div>
-                                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email Address">
+                                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('Email Address') }}">
                                   @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -67,7 +50,7 @@
                                   <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                   </div>
-                                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -100,7 +83,9 @@
                     </div>
                     @endif
                     <div class="col-6 text-right">
-                      <a href="{{ route('register') }}" class="text-light"><small>Create new account</small></a>
+                      <a href="{{ route('register') }}" class="text-light">
+                        <small>{{ __('Create new account') }}</small>
+                    </a>
                     </div>
                   </div>
             </div>
