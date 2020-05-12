@@ -1,6 +1,6 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="../../pages/dashboards/dashboard.html">
+      <a class="navbar-brand" href="{{ route('site') }}">
         <img src="{{ asset('img/logo/takada.png') }}">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="../../pages/dashboards/dashboard.html">
+              <a href="{{ route('login') }}">
                 <img src="{{ asset('img/logo/takada.png') }}">
               </a>
             </div>
@@ -22,14 +22,14 @@
             </div>
           </div>
         </div>
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item">
-            <a href="/backend/dashboard" class="nav-link">
+            <a href="{{ route('dashboard') }}" class="nav-link">
               <span class="nav-link-inner--text">{{ __('Dashboard') }}</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="{{ route('site') }}" class="nav-link">
               <span class="nav-link-inner--text">{{ __('Site') }}</span>
             </a>
           </li>
@@ -52,4 +52,4 @@
         <hr class="d-lg-none" />
       </div>
     </div>
-  </nav>
+</nav>

@@ -33,6 +33,10 @@
 
         <!-- Main content -->
         <div class="main-content" id="panel">
+            @if (!\Request::is('backend/*'))
+                @include('partials.navbars.site')
+            @endif
+
             @yield('content')
 
             <!-- Admin Footer -->

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('site');
 
 Auth::routes(['verify' => true]);
 
@@ -24,4 +24,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/backend/dashboard', function () {
     return view('dashboard');
-})->middleware('verified');
+})->middleware('verified')->name('dashboard');
