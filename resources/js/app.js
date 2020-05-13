@@ -10,7 +10,7 @@ window.Vue = require('vue');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import router from './router';
+import routes from './router';
 
 import MainDashboard from './plugins/main'
 
@@ -27,27 +27,6 @@ Vue.use(MainDashboard)
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-// Components
-/*
-Vue.component('badge', require('./components/bootstrap/Badge.vue').default);
-Vue.component('base-alert', require('./components/bootstrap/BaseAlert.vue').default);
-Vue.component('base-button', require('./components/bootstrap/BaseButton.vue').default);
-Vue.component('base-checkbox', require('./components/bootstrap/BaseCheckbox.vue').default);
-Vue.component('base-dropdown', require('./components/bootstrap/BaseDropdown.vue').default);
-Vue.component('base-header', require('./components/bootstrap/BaseHeader.vue').default);
-Vue.component('base-input', require('./components/bootstrap/BaseInput.vue').default);
-Vue.component('base-nav', require('./components/bootstrap/BaseNav.vue').default);
-Vue.component('base-pagination', require('./components/bootstrap/BasePagination.vue').default);
-Vue.component('base-progress', require('./components/bootstrap/BaseProgress.vue').default);
-Vue.component('base-radio', require('./components/bootstrap/BaseRadio.vue').default);
-Vue.component('base-slider', require('./components/bootstrap/BaseSlider.vue').default);
-Vue.component('base-switch', require('./components/bootstrap/BaseSwitch.vue').default);
-Vue.component('base-table', require('./components/bootstrap/BaseTable.vue').default);
-Vue.component('card', require('./components/bootstrap/Card.vue').default);
-Vue.component('modal', require('./components/bootstrap/Modal.vue').default);
-Vue.component('stats-card', require('./components/bootstrap/StatsCard.vue').default);
-*/
 
 // Pages
 Vue.component('dashboard-view', require('./components/pages/DashboardView.vue').default);
