@@ -1,0 +1,25 @@
+{
+    "name": "takada/menubuilder",
+    "description": "",
+    "authors": [
+        {
+            "name": "Choji Takada",
+            "email": "chojitakada@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\MenuBuilder\\Providers\\MenuBuilderServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\MenuBuilder\\": ""
+        }
+    }
+}

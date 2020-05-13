@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix'     => config('takada.admin_url'),
-    'middleware' => ['auth', 'verified']
+    'middleware' => ['auth', 'verified'],
 ],
 function() {
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/menu-builder', 'MenuBuilderController@index');
 });
