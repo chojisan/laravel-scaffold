@@ -1,0 +1,25 @@
+{
+    "name": "takada/cms",
+    "description": "",
+    "authors": [
+        {
+            "name": "Choji Takada",
+            "email": "chojitakada@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\CMS\\Providers\\CMSServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\CMS\\": ""
+        }
+    }
+}

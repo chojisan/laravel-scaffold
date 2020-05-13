@@ -1,5 +1,6 @@
 {
     "Dashboard": true,
     "MenuBuilder": true,
-    "Core": true
+    "Core": true,
+    "CMS": true
 }
