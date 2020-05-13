@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +12,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-})->name('site');
-
-Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::group([
+    'prefix'     => config('takada.admin_url'),
+    'middleware' => ['auth', 'verified']
+],
+function() {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/test', 'DashboardController@index');
+});

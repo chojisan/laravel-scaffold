@@ -27,26 +27,27 @@
 <body class="{{ $class ?? '' }}">
     <div id="app">
         <!-- Sidenav -->
-        @if (\Request::is('backend/*'))
+        @if (\Request::is('backend') || \Request::is('backend/*'))
             @include('partials.sidenav')
+        @endif
+
+        @if (!\Request::is('backend') && !\Request::is('backend/*'))
+            @include('partials.navbars.site')
         @endif
 
         <!-- Main content -->
         <div class="main-content" id="panel">
-            @if (!\Request::is('backend/*'))
-                @include('partials.navbars.site')
-            @endif
 
             @yield('content')
 
             <!-- Admin Footer -->
-            @if (\Request::is('backend/*'))
+            @if (\Request::is('backend') || \Request::is('backend/*'))
                 @include('partials.footers.admin')
             @endif
         </div>
 
         <!-- Site Footer -->
-        @if (!\Request::is('backend/*'))
+        @if (!\Request::is('backend') && !\Request::is('backend/*'))
             @include('partials.footers.site')
         @endif
     </div>
