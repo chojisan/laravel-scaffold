@@ -8,10 +8,15 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import router from './router';
+
 import MainDashboard from './plugins/main'
 
+Vue.use(VueRouter);
 Vue.use(MainDashboard)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -54,6 +59,6 @@ Vue.component('dashboard-view', require('./components/pages/DashboardView.vue').
  */
 
 const app = new Vue({
-    router,
     el: '#app',
+    router: new VueRouter(routes)
 });

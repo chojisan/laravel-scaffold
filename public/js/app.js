@@ -99535,8 +99535,11 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
-/* harmony import */ var _plugins_main__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./plugins/main */ "./resources/js/plugins/main.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+/* harmony import */ var _plugins_main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./plugins/main */ "./resources/js/plugins/main.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -99547,7 +99550,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 
-Vue.use(_plugins_main__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_plugins_main__WEBPACK_IMPORTED_MODULE_3__["default"]);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -99580,16 +99586,16 @@ Vue.component('stats-card', require('./components/bootstrap/StatsCard.vue').defa
 */
 // Pages
 
-Vue.component('dashboard-view', __webpack_require__(/*! ./components/pages/DashboardView.vue */ "./resources/js/components/pages/DashboardView.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('dashboard-view', __webpack_require__(/*! ./components/pages/DashboardView.vue */ "./resources/js/components/pages/DashboardView.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
-  el: '#app'
+var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+  el: '#app',
+  router: new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"](routes)
 });
 
 /***/ }),
@@ -102647,19 +102653,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+/* harmony default export */ __webpack_exports__["default"] = ({
   linkExactActiveClass: "active",
   mode: "history",
   routes: [{
     path: '/'
   }]
-}));
+});
 
 /***/ }),
 
