@@ -1,0 +1,25 @@
+{
+    "name": "takada/core",
+    "description": "",
+    "authors": [
+        {
+            "name": "Choji Takada",
+            "email": "chojitakada@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Core\\Providers\\CoreServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Core\\": ""
+        }
+    }
+}
