@@ -1,5 +1,9 @@
 <?php
 
 return [
-    'name' => 'Core'
+    'name' => 'core',
+
+    'admin_url' => 'backend',
+
+    'api_url'   => 'api',
 ];
