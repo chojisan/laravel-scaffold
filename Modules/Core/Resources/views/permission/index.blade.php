@@ -59,24 +59,31 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($permissions as $permission)
-                  <tr>
-                    <td>
-                      {{ $permission->id }}
-                    </td>
-                    <td>
-                      <b>{{ $permission->name }}</b>
-                    </td>
-                    <td class="table-actions">
-                      <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
-                        <i class="fas fa-user-edit"></i>
-                      </a>
-                      <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
-                        <i class="fas fa-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  @endforeach
+                    @forelse($permissions as $permission)
+                        <tr>
+                            <td>
+                            {{ $permission->id }}
+                            </td>
+                            <td>
+                            <b>{{ $permission->name }}</b>
+                            </td>
+                            <td class="table-actions">
+                            <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
+                                <i class="fas fa-user-edit"></i>
+                            </a>
+                            <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            </td>
+                        </tr>
+
+                        @empty
+                            <tr>
+                                <td colspan="3">
+                                    <p class="text-center">No categories yet.</p>
+                                </td>
+                            </tr>
+                  @endforelse
 
                 </tbody>
               </table>

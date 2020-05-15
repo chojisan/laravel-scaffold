@@ -59,24 +59,31 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($roles as $role)
-                  <tr>
-                    <td>
-                      {{ $role->id }}
-                    </td>
-                    <td>
-                      <b>{{ $role->name }}</b>
-                    </td>
-                    <td class="table-actions">
-                      <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
-                        <i class="fas fa-user-edit"></i>
-                      </a>
-                      <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
-                        <i class="fas fa-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  @endforeach
+                    @forelse($roles as $role)
+                        <tr>
+                            <td>
+                            {{ $role->id }}
+                            </td>
+                            <td>
+                            <b>{{ $role->name }}</b>
+                            </td>
+                            <td class="table-actions">
+                            <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
+                                <i class="fas fa-user-edit"></i>
+                            </a>
+                            <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            </td>
+                        </tr>
+
+                        @empty
+                            <tr>
+                                <td colspan="3">
+                                    <p class="text-center">No roles yet.</p>
+                                </td>
+                            </tr>
+                  @endforelse
 
                 </tbody>
               </table>
