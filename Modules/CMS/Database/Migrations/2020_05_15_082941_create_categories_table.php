@@ -15,10 +15,10 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('parent_id')->default(0);
             $table->integer('lft');
             $table->integer('rgt');
-            $table->unsignedInteger('level');
+            $table->unsignedInteger('level')->default(1);
             $table->string('name');
             $table->string('slug');
             $table->integer('order');
