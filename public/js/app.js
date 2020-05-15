@@ -86389,7 +86389,7 @@ var render = function() {
                           staticClass: "avatar rounded-circle",
                           attrs: {
                             alt: "Image placeholder",
-                            src: "img/theme/team-1.jpg"
+                            src: "/img/profile/dummy.png"
                           }
                         })
                       ]),
@@ -86441,7 +86441,7 @@ var render = function() {
                           staticClass: "avatar rounded-circle",
                           attrs: {
                             alt: "Image placeholder",
-                            src: "img/theme/team-2.jpg"
+                            src: "/img/profile/dummy.png"
                           }
                         })
                       ]),
@@ -86493,7 +86493,7 @@ var render = function() {
                           staticClass: "avatar rounded-circle",
                           attrs: {
                             alt: "Image placeholder",
-                            src: "img/theme/team-3.jpg"
+                            src: "/img/profile/dummy.png"
                           }
                         })
                       ]),
@@ -86545,7 +86545,7 @@ var render = function() {
                           staticClass: "avatar rounded-circle",
                           attrs: {
                             alt: "Image placeholder",
-                            src: "img/theme/team-4.jpg"
+                            src: "/img/profile/dummy.png"
                           }
                         })
                       ]),
@@ -86597,7 +86597,7 @@ var render = function() {
                           staticClass: "avatar rounded-circle",
                           attrs: {
                             alt: "Image placeholder",
-                            src: "img/theme/team-5.jpg"
+                            src: "/img/profile/dummy.png"
                           }
                         })
                       ]),
@@ -86808,7 +86808,7 @@ var render = function() {
                           _c("img", {
                             attrs: {
                               alt: "Image placeholder",
-                              src: "img/theme/team-4-800x800.jpg"
+                              src: "/img/profile/dummy.png"
                             }
                           })
                         ]

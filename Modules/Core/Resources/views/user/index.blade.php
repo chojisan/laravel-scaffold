@@ -65,7 +65,9 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td class="table-user">
-                                <img src="../../assets/img/theme/team-1.jpg" class="avatar rounded-circle mr-3">
+
+                                    <img src="{{ $avatar = $user->avatar ?? '/img/profile/dummy.png' }}" class="avatar rounded-circle mr-3">
+
                                 <b>{{ $user->name }}</b>
                                 </td>
                                 <td>

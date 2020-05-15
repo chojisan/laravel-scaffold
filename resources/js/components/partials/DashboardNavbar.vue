@@ -76,7 +76,7 @@
                   <!-- Avatar -->
                   <img
                     alt="Image placeholder"
-                    src="img/theme/team-1.jpg"
+                    src="/img/profile/dummy.png"
                     class="avatar rounded-circle"
                   />
                 </div>
@@ -105,7 +105,7 @@
                   <!-- Avatar -->
                   <img
                     alt="Image placeholder"
-                    src="img/theme/team-2.jpg"
+                    src="/img/profile/dummy.png"
                     class="avatar rounded-circle"
                   />
                 </div>
@@ -134,7 +134,7 @@
                   <!-- Avatar -->
                   <img
                     alt="Image placeholder"
-                    src="img/theme/team-3.jpg"
+                    src="/img/profile/dummy.png"
                     class="avatar rounded-circle"
                   />
                 </div>
@@ -163,7 +163,7 @@
                   <!-- Avatar -->
                   <img
                     alt="Image placeholder"
-                    src="img/theme/team-4.jpg"
+                    src="/img/profile/dummy.png"
                     class="avatar rounded-circle"
                   />
                 </div>
@@ -192,7 +192,7 @@
                   <!-- Avatar -->
                   <img
                     alt="Image placeholder"
-                    src="img/theme/team-5.jpg"
+                    src="/img/profile/dummy.png"
                     class="avatar rounded-circle"
                   />
                 </div>
@@ -297,7 +297,7 @@
         <base-dropdown class="nav-link pr-0">
           <div class="media align-items-center" slot="title">
             <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="img/theme/team-4-800x800.jpg" />
+              <img alt="Image placeholder" src="/img/profile/dummy.png" />
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
               <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
