@@ -27,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('cms::tag.create');
     }
 
     /**
@@ -38,7 +38,18 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'published' => 'required'
+        ]);
+
+        $tag = Tag::create([
+            'name' => request('name'),
+            'published' => request('published')
+        ]);
+
+        return redirect(route('tags.index'))
+            ->with('flash', 'Your tag has been created!');
     }
 
     /**
@@ -47,9 +58,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tag $tag)
     {
-        //
+        return view('cms::tag.show', ['tag' => $tag]);
     }
 
     /**
@@ -58,9 +69,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('cms::tag.edit', ['tag' => $tag]);
     }
 
     /**
@@ -81,8 +92,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return redirect()->back();
     }
 }
