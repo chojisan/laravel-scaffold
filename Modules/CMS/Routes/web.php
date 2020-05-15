@@ -18,7 +18,7 @@ Route::group([
     'middleware' => ['auth', 'verified']
 ],
 function() {
-    Route::resource('/categories', 'CategoryController@index');
-    Route::resource('/tags', 'TagController@index');
-    Route::resource('/articles', 'ArticleController@index');
+    Route::resource('categories', 'CategoryController');
+    Route::resource('tags', 'TagController');
+    Route::resource('articles', 'ArticleController');
 });
