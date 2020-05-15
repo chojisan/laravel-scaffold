@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,12 @@
 |
 */
 
-Route::prefix('cms')->group(function() {
-    Route::get('/', 'CMSController@index');
+Route::group([
+    'prefix'     => config('takada.admin_url') . '/cms',
+    'middleware' => ['auth', 'verified']
+],
+function() {
+    Route::resource('/categories', 'CategoryController@index');
+    Route::resource('/tags', 'TagController@index');
+    Route::resource('/articles', 'ArticleController@index');
 });
