@@ -22,25 +22,31 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="#navbar-dashboards">
+              <a class="nav-link active" href="/backend">
                 <i class="ni ni-shop text-primary"></i>
                 <span class="nav-link-text">Dashboards</span>
               </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/backend/users">
                   <i class="ni ni-circle-08 text-green"></i>
                   <span class="nav-link-text">Users</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/backend/roles">
                   <i class="ni ni-lock-circle-open text-green"></i>
                   <span class="nav-link-text">Roles</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/backend/permissions">
+                  <i class="ni ni-key-25 text-green"></i>
+                  <span class="nav-link-text">Permissions</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/backend/media">
                   <i class="ni ni-image text-green"></i>
                   <span class="nav-link-text">Media</span>
                 </a>
@@ -53,13 +59,13 @@
               <div class="collapse" id="navbar-examples">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a href="../../pages/examples/pricing.html" class="nav-link">Categories</a>
+                    <a href="/backend/cms/categories" class="nav-link">Categories</a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../pages/examples/login.html" class="nav-link">Tags</a>
+                    <a href="/backend/cms/tags" class="nav-link">Tags</a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../pages/examples/register.html" class="nav-link">Articles</a>
+                    <a href="/backend/cms/articles" class="nav-link">Articles</a>
                   </li>
                 </ul>
               </div>
