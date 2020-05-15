@@ -30,7 +30,7 @@ class Article extends Model
 
     public function tags()
     {
-        return $this->hasMany('Modules\CMS\Entities\Tag');
+        return $this->belongsToMany('Modules\CMS\Entities\Tag');
     }
 
     public function author()

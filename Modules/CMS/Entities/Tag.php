@@ -13,6 +13,6 @@ class Tag extends Model
 
     public function article()
     {
-        return $this->belongsTo('Modules\CMS\Entities\Article');
+        return $this->belongsToMany('Modules\CMS\Entities\Article');
     }
 }
