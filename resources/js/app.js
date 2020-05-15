@@ -28,6 +28,9 @@ Vue.use(MainDashboard)
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+// Partials
+Vue.component('dashboard-navbar', require("./components/partials/DashboardNavbar.vue").default);
+
 // Pages
 Vue.component('dashboard-view', require('./components/pages/DashboardView.vue').default);
 

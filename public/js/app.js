@@ -4226,12 +4226,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _partials_DashboardNavbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/DashboardNavbar */ "./resources/js/components/partials/DashboardNavbar.vue");
-/* harmony import */ var _bootstrap_Charts_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../bootstrap/Charts/config */ "./resources/js/components/bootstrap/Charts/config.js");
-/* harmony import */ var _bootstrap_Charts_LineChart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../bootstrap/Charts/LineChart */ "./resources/js/components/bootstrap/Charts/LineChart.js");
-/* harmony import */ var _bootstrap_Charts_BarChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../bootstrap/Charts/BarChart */ "./resources/js/components/bootstrap/Charts/BarChart.js");
- // Charts
-
+/* harmony import */ var _bootstrap_Charts_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../bootstrap/Charts/config */ "./resources/js/components/bootstrap/Charts/config.js");
+/* harmony import */ var _bootstrap_Charts_LineChart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../bootstrap/Charts/LineChart */ "./resources/js/components/bootstrap/Charts/LineChart.js");
+/* harmony import */ var _bootstrap_Charts_BarChart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../bootstrap/Charts/BarChart */ "./resources/js/components/bootstrap/Charts/BarChart.js");
+//import DashboardNavbar from "../partials/DashboardNavbar";
+// Charts
 
 
  // Tables
@@ -4240,9 +4239,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    DashboardNavbar: _partials_DashboardNavbar__WEBPACK_IMPORTED_MODULE_0__["default"],
-    LineChart: _bootstrap_Charts_LineChart__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BarChart: _bootstrap_Charts_BarChart__WEBPACK_IMPORTED_MODULE_3__["default"]
+    //DashboardNavbar,
+    LineChart: _bootstrap_Charts_LineChart__WEBPACK_IMPORTED_MODULE_1__["default"],
+    BarChart: _bootstrap_Charts_BarChart__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -4253,7 +4252,7 @@ __webpack_require__.r(__webpack_exports__);
           datasets: [],
           labels: []
         },
-        extraOptions: _bootstrap_Charts_config__WEBPACK_IMPORTED_MODULE_1__["blueChartOptions"]
+        extraOptions: _bootstrap_Charts_config__WEBPACK_IMPORTED_MODULE_0__["blueChartOptions"]
       },
       redBarChart: {
         chartData: {
@@ -99563,7 +99562,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_plugins_main__WEBPACK_IMPORTED_M
  */
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-// Pages
+// Partials
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('dashboard-navbar', __webpack_require__(/*! ./components/partials/DashboardNavbar.vue */ "./resources/js/components/partials/DashboardNavbar.vue")["default"]); // Pages
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('dashboard-view', __webpack_require__(/*! ./components/pages/DashboardView.vue */ "./resources/js/components/pages/DashboardView.vue")["default"]);
 /**

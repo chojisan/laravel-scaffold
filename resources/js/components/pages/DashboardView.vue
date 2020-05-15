@@ -1,5 +1,5 @@
 <script>
-import DashboardNavbar from "../partials/DashboardNavbar";
+//import DashboardNavbar from "../partials/DashboardNavbar";
 
 // Charts
 import * as chartConfigs from "../bootstrap/Charts/config";
@@ -12,7 +12,7 @@ import BarChart from "../bootstrap/Charts/BarChart";
 
 export default {
     components: {
-        DashboardNavbar,
+        //DashboardNavbar,
         LineChart,
         BarChart
     },
