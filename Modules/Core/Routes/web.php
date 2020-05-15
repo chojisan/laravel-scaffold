@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,12 @@
 |
 */
 
-Route::prefix('core')->group(function() {
-    Route::get('/', 'CoreController@index');
+Route::group([
+    'prefix'     => config('takada.admin_url'),
+    'middleware' => ['auth', 'verified']
+],
+function() {
+    Route::get('/users', 'UserController@index');
+    Route::get('/roles', 'RoleController@index');
+    Route::get('/permissions', 'PermissionController@index');
 });
