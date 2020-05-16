@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->foreignId('category_id');
             $table->foreignId('author_id');
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
             $table->boolean('featured')->default(0);
