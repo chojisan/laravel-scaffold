@@ -12,7 +12,7 @@ class Article extends Model
         'short_description',
         'description',
         'featured',
-        'image',
+        'cover_image',
         'parent_id',
         'category_id',
         'author_id',
@@ -41,5 +41,10 @@ class Article extends Model
     public function scopePublished($query)
     {
         return $query->where('status', 'published');
+    }
+
+    public function getCoverImageAttribute($image)
+    {
+        return asset($image ? 'storage/' . $image : 'storage/articles/default.png');
     }
 }
