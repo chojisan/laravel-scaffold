@@ -14,7 +14,7 @@
                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="#">{{ __('CMS') }}</a></li>
                 <li class="breadcrumb-item"><a href="#">{{ __('Tags') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Add New Tag') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Tag') }}</li>
               </ol>
             </nav>
           </div>
@@ -31,11 +31,12 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header">
-              <h3 class="mb-0">{{ __('Add New Tag') }}</h3>
+              <h3 class="mb-0">{{ __("Edit Tag") }}</h3>
             </div>
             <!-- Card body -->
             <div class="card-body">
-              <form method="PUT" action="{{ route('tags.update', $tag->id) }}">
+              <form method="POST" action="{{ route('tags.update', $tag->id) }}">
+                @method('PUT')
                 @csrf
                 <div class="form-group row">
                   <label for="name" class="col-md-2 col-form-label form-control-label">Name</label>

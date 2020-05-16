@@ -81,9 +81,17 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'published' => 'required'
+        ]);
+
+        $tag->update(request(['name', 'published']));
+
+        return redirect(route('tags.index'))
+            ->with('flash', 'Your tag has been updated!');
     }
 
     /**
