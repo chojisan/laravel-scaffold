@@ -105,6 +105,7 @@
 
 @push('js')
 <script defer async>
+$('document').ready(function () {
     $('.delete-confirm').on('click', function (event) {
         event.preventDefault();
         const url = $(this).attr('data-href');
@@ -112,9 +113,11 @@
             title: 'Are you sure?',
             text: 'This record and it`s details will be permanantly deleted!',
             icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
-            if (value) {
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
                 let form = $('#delete-form')
 
                 form.attr('action', url);
@@ -122,5 +125,6 @@
             }
         });
     });
+});
 </script>
 @endpush
