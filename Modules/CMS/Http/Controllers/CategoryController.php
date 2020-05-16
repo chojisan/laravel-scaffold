@@ -27,7 +27,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::published()->get();
+
+        return view('cms::category.create', ['categories' => $categories]);
     }
 
     /**
@@ -38,7 +40,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:categories',
+            'published' => 'required'
+        ]);
+
+        $tag = Category::create($request->only([
+            'name',
+            'slug',
+            'parent_id',
+            'order',
+            'published'
+        ]));
+
+        return redirect(route('categories.index'))
+            ->with('flash', 'Your category has been created!');
     }
 
     /**
@@ -47,9 +64,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        return view('cms::category.show', ['category' => $category]);
     }
 
     /**
@@ -58,9 +75,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        $categories = Category::published()->get();
+
+        return view('cms::category.edit', ['category' => $category, 'categories' => $categories]);
     }
 
     /**
@@ -70,9 +89,24 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:categories',
+            'published' => 'required'
+        ]);
+
+        $category->update($request->only([
+            'name',
+            'slug',
+            'parent_id',
+            'order',
+            'published'
+        ]));
+
+        return redirect(route('categories.index'))
+            ->with('flash', 'Your category has been updated!');
     }
 
     /**
@@ -81,8 +115,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->back();
     }
 }
