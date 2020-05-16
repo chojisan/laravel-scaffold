@@ -3,9 +3,12 @@
 namespace Modules\CMS\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Category extends Model
 {
+    use NodeTrait;
+
     protected $fillable = [
         'name',
         'slug',
@@ -16,6 +19,17 @@ class Category extends Model
         'order',
         'published'
     ];
+
+    // Nested set override
+    public function getLftName()
+    {
+        return 'lft';
+    }
+
+    public function getRgtName()
+    {
+        return 'rgt';
+    }
 
     public function parent() {
         return $this->belongsTo(self::class, 'parent_id');
