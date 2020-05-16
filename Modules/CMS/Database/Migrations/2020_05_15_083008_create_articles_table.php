@@ -15,7 +15,6 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreignId('category_id');
             $table->foreignId('author_id');
             $table->string('title');
@@ -23,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
             $table->boolean('featured')->default(0);
-            $table->string('image')->nullable();
+            $table->string('cover_image')->nullable();
             $table->string('meta_key')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('meta_data')->nullable();
