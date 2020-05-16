@@ -29,4 +29,9 @@ class Category extends Model
     {
         return $this->hasMany('Modules\CMS\Entities\Article');
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', 1);
+    }
 }

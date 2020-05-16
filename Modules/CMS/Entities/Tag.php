@@ -15,4 +15,9 @@ class Tag extends Model
     {
         return $this->belongsToMany('Modules\CMS\Entities\Article');
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', 1);
+    }
 }

@@ -37,4 +37,9 @@ class Article extends Model
     {
         return $this->belongsTo('App\User', 'id', 'author_id');
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published');
+    }
 }
