@@ -16,10 +16,6 @@
               </ol>
             </nav>
           </div>
-          <div class="col-lg-6 col-5 text-right">
-            <a href="#" class="btn btn-sm btn-neutral">New</a>
-            <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-          </div>
         </div>
       </div>
     </div>
@@ -37,7 +33,7 @@
                 <h3 class="mb-0">{{ __('Permissions') }}</h3>
                 </div>
                 <div class="col-6 text-right">
-                    <a href="#" class="btn btn-sm btn-neutral btn-round btn-icon" data-toggle="tooltip" data-original-title="Edit product">
+                    <a href="{{ route('permissions.create') }}" class="btn btn-sm btn-neutral btn-round btn-icon" data-toggle="tooltip" data-original-title="Edit product">
                         <span class="btn-inner--icon"><i class="fas fa-file"></i></span>
                         <span class="btn-inner--text">Add New</span>
                       </a>
@@ -68,12 +64,15 @@
                             <b>{{ $permission->name }}</b>
                             </td>
                             <td class="table-actions">
-                            <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
-                                <i class="fas fa-user-edit"></i>
-                            </a>
-                            <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
-                                <i class="fas fa-trash"></i>
-                            </a>
+                                <a href="{{ route('permissions.show', $permission->id) }}" class="table-action" data-toggle="tooltip" data-original-title="Show permission">
+                                    <i class="fas fa-file"></i>
+                                </a>
+                                <a href="{{ route('permissions.edit', $permission->id) }}" class="table-action" data-toggle="tooltip" data-original-title="Edit permission">
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                                <a href="#" class="table-action table-action-delete delete-confirm" data-toggle="tooltip" data-original-title="Delete permission">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
 
@@ -87,9 +86,40 @@
 
                 </tbody>
               </table>
+              <form method="POST" action="" id="delete-form">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+            </form>
             </div>
           </div>
       </div>
     </div>
   </div>
 @endsection
+
+@push('js')
+<script defer async>
+$('document').ready(function () {
+    $('.delete-confirm').on('click', function (event) {
+        event.preventDefault();
+        const url = $(this).attr('data-href');
+        swal.fire({
+            title: 'Are you sure?',
+            text: 'This record and it`s details will be permanantly deleted!',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                let form = $('#delete-form')
+
+                form.attr('action', url);
+                form.submit();
+            }
+        });
+    });
+});
+</script>
+@endpush
+
