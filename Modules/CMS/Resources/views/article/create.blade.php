@@ -93,7 +93,7 @@
                     <div class="col-md-10">
                         <select multiple class="form-control" id="tags" name="tags[]">
                             @forelse($tags as $tag)
-                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                <option value="{{ $tag->id }}" @if(old('tags')) @if(in_array($tag->id, old('tags'))) selected @endif @endif>{{ $tag->name }}</option>
                                 @empty
                             @endforelse
                         </select>
@@ -123,7 +123,7 @@
                   <div class="col-md-10">
                     <select class="form-control" id="status" name="status">
                         <option value="published" @if(old('status') == 'published') selected @endif>Publish</option>
-                        <option value="unpublish" @if(old('status') == 'unpublished') selected @endif>Unpublish</option>
+                        <option value="unpublish" @if(old('status') == 'unpublish') selected @endif>Unpublish</option>
                       </select>
                   </div>
                 </div>
