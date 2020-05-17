@@ -18,7 +18,7 @@ Route::group([
     'middleware' => ['auth', 'verified']
 ],
 function() {
-    Route::get('/users', 'UserController@index');
-    Route::get('/roles', 'RoleController@index');
-    Route::get('/permissions', 'PermissionController@index');
+    Route::resource('/users', 'UserController');
+    Route::resource('/roles', 'RoleController');
+    Route::resource('/permissions', 'PermissionController');
 });
