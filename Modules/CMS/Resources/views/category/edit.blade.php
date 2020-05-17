@@ -14,7 +14,7 @@
                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="#">{{ __('CMS') }}</a></li>
                 <li class="breadcrumb-item"><a href="#">{{ __('Categories') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Category') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Update Category') }}</li>
               </ol>
             </nav>
           </div>
@@ -31,7 +31,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header">
-              <h3 class="mb-0">{{ __('Edit Category') }}</h3>
+              <h3 class="mb-0">{{ __('Update Category') }}</h3>
             </div>
             <!-- Card body -->
             <div class="card-body">
