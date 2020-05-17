@@ -4,7 +4,7 @@ namespace Modules\Core\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use App\User;
+use Modules\Core\Entities\User;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
