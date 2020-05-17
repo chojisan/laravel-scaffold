@@ -15,9 +15,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::get()->toTree();
 
-        return view('cms::category.index', ['categories' => $categories]);
+        $categoriesFlatten = traverseFlatten($categories, 'name');
+
+        return view('cms::category.index', ['categories' => $categoriesFlatten]);
     }
 
     /**
