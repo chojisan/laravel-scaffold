@@ -29,10 +29,17 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories = Category::published()->get();
+        $articleCount = Article::count();
+        $categories = Category::published()->get()->toTree();
         $tags = Tag::published()->get();
 
-        return view('cms::article.create', ['categories' => $categories, 'tags' => $tags]);
+        $categories = traverseFlatten($categories, 'name');
+
+        return view('cms::article.create', [
+            'categories' => $categories,
+            'tags' => $tags,
+            'article_count' => $articleCount
+            ]);
     }
 
     /**
@@ -43,37 +50,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'title' => 'required',
-            'slug' => 'required|unique:articles',
-            'category_id' => 'required',
-            'status' => 'required',
-            //'cover_image'     =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        $attributes = $this->attributes($request);
 
-        $attribute = $request->only([
-            'title',
-            'slug',
-            'short_description',
-            'description',
-            'featured',
-            'category_id',
-            'author_id',
-            'order',
-            'status',
-            'meta_key',
-            'meta_description',
-            'meta_data'
-        ]);
+        // Merge User ID
+        $attributes = array_merge($attributes, ['author_id' => auth()->id()]);
 
-        if(request('cover_image'))
-        {
-            $attribute = array_merge($attribute, [
-                'cover_image' => request()->file('cover_image')->store('articles', 'public')
-            ]);
-        }
-
-        $article = Article::create(array_merge($attribute, ['author_id' => auth()->id()]));
+        $article = Article::create($attributes);
 
         // Attach tags
         if(!empty(request('tags')))
@@ -104,13 +86,17 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        $articleCount = Article::count();
         $categories = Category::published()->get();
         $tags = Tag::published()->get();
 
-        return view('cms::articles.edit', [
+        $categories = traverseFlatten($categories, 'name');
+
+        return view('cms::article.edit', [
             'categories' => $categories,
             'tags' => $tags,
-            'article' => $article]);
+            'article' => $article,
+            'article_count' => $articleCount]);
     }
 
     /**
@@ -122,28 +108,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        $request->validate([
-            'title' => 'required',
-            'slug' => 'required|unique:categories',
-            'category_id' => 'required',
-            'published' => 'required'
-        ]);
+        $attributes = $this->attributes($request, $article->id);
 
-        $article->update($request->only([
-            'title',
-            'slug',
-            'short_description',
-            'description',
-            'featured',
-            'image',
-            'category_id',
-            'author_id',
-            'order',
-            'status',
-            'meta_key',
-            'meta_description',
-            'meta_data'
-        ]));
+        $article->update($attributes);
+
+        // Attach tags
+        if(!empty(request('tags')))
+        {
+            $article->tags()->sync(request('tags'));
+        }
 
         return redirect(route('articles.index'))
             ->with('flash', 'Your article has been updated!');
@@ -160,5 +133,43 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect()->back();
+    }
+
+    protected function attributes($request, $id = '')
+    {
+        // Validate Inputs
+        request()->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:articles,slug,' . $id,
+            'category_id' => 'required',
+            'status' => 'required',
+            //'cover_image'     =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        // Get Attributes
+        $attributes = $request->only([
+            'title',
+            'slug',
+            'short_description',
+            'description',
+            'featured',
+            'category_id',
+            'author_id',
+            'order',
+            'status',
+            'meta_key',
+            'meta_description',
+            'meta_data'
+        ]);
+
+        // Check for cover image
+        if(request('cover_image'))
+        {
+            $attributes = array_merge($attributes, [
+                'cover_image' => request()->file('cover_image')->store('articles', 'public')
+            ]);
+        }
+
+        return $attributes;
     }
 }
