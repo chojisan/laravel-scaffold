@@ -73,13 +73,15 @@
                                     @endif
                                 </td>
                                 <td class="table-actions">
-                                <a href="{{ route('tags.edit', $tag->id) }}" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
-                                    <i class="fas fa-user-edit"></i>
-                                </a>
-                                <a href="#" data-href="{{ route('tags.destroy', $tag->id) }}" class="table-action table-action-delete delete-confirm" data-toggle="tooltip" data-original-title="Delete product">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-
+                                    <a href="{{ route('tags.show', $tag->id) }}" class="table-action" data-toggle="tooltip" data-original-title="Show tag">
+                                        <i class="fas fa-file"></i>
+                                    </a>
+                                    <a href="{{ route('tags.edit', $tag->id) }}" class="table-action" data-toggle="tooltip" data-original-title="Edit tag">
+                                        <i class="fas fa-user-edit"></i>
+                                    </a>
+                                    <a href="#" data-href="{{ route('tags.destroy', $tag->id) }}" class="table-action table-action-delete delete-confirm" data-toggle="tooltip" data-original-title="Delete tag">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
                                 </td>
                         </tr>
 
