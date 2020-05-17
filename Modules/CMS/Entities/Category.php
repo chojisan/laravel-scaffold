@@ -30,7 +30,7 @@ class Category extends Model
     {
         return 'rgt';
     }
-
+/*
     public function parent() {
         return $this->belongsTo(self::class, 'parent_id');
     }
@@ -38,7 +38,7 @@ class Category extends Model
     public function children() {
         return $this->hasMany(self::class, 'parent_id','id');
     }
-
+*/
     public function articles()
     {
         return $this->hasMany('Modules\CMS\Entities\Article');
