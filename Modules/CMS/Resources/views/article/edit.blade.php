@@ -124,7 +124,7 @@
                   <div class="col-md-10">
                     <select class="form-control" id="status" name="status">
                         <option value="published" @if($article->status == 'published') selected @endif>Publish</option>
-                        <option value="unpublish" @if($article->status == 'unpublished') selected @endif>Unpublish</option>
+                        <option value="unpublish" @if($article->status == 'unpublish') selected @endif>Unpublish</option>
                       </select>
                   </div>
                 </div>
