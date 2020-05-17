@@ -39,6 +39,9 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+
+        // Helper functions
+        require_once base_path('Modules/Core/Helpers/helpers.php');
     }
 
     /**

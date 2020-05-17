@@ -20,6 +20,9 @@
     "autoload": {
         "psr-4": {
             "Modules\\Core\\": ""
-        }
+        },
+        "files": [
+            "Modules/Core/Helpers/helpers.php"
+        ]
     }
 }
