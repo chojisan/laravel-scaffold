@@ -67,16 +67,19 @@
                             <td>
                             <b>{{ $article->title }}</b>
                             </td>
-                            <td>{{ $article->featured }}</td>
+                            <td><i class="{{ $article->featured == 1 ? 'fas fa-star' : 'far fa-star' }}"></i></td>
                             <td>{{ $article->category->name }}</td>
                             <td>{{ $article->status }}</td>
                             <td class="table-actions">
-                            <a href="{{ route('articles.edit', $article->id) }}" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
-                                <i class="fas fa-user-edit"></i>
-                            </a>
-                            <a href="#" data-href="{{ route('articles.destroy', $article->id) }}" class="table-action table-action-delete delete-confirm" data-toggle="tooltip" data-original-title="Delete product">
-                                <i class="fas fa-trash"></i>
-                            </a>
+                                <a href="{{ route('articles.show', $article->id) }}" class="table-action" data-toggle="tooltip" data-original-title="Show article">
+                                    <i class="fas fa-file"></i>
+                                </a>
+                                <a href="{{ route('articles.edit', $article->id) }}" class="table-action" data-toggle="tooltip" data-original-title="Edit article">
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                                <a href="#" data-href="{{ route('articles.destroy', $article->id) }}" class="table-action table-action-delete delete-confirm" data-toggle="tooltip" data-original-title="Delete article">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
 
