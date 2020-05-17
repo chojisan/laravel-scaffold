@@ -1,13 +1,27 @@
 <?php
 
-function traverse($categories, $prefix = '-')
+function traverseName(&$nodes, $name, $prefix = '-')
 {
-    $tree = [];
-    foreach ($categories as $category) {
-        $tree = PHP_EOL.$prefix.' '.$category->name;
+    foreach ($nodes as $node) {
+        $node->$name = PHP_EOL.$prefix.' '.$node->$name;
 
-        traverse($category->children, $prefix.'-');
+        traverseName($node->children, $name, $prefix.'-');
+    }
+}
+
+function traverseFlatten($nodes, $name, $prefix = '-')
+{
+    $flatten = [];
+    foreach ($nodes as $node) {
+        $node->name = PHP_EOL.$prefix.' '.$node->$name;
+        $flatten[] = $node;
+
+        if($node->children)
+        {
+            $flatten = array_merge($flatten, traverseFlatten($node->children, $name, $prefix.'-'));
+        }
+
     }
 
-    return $tree;
+    return $flatten;
 }
