@@ -35,7 +35,7 @@ class Article extends Model
 
     public function author()
     {
-        return $this->belongsTo('App\User', 'id', 'author_id');
+        return $this->belongsTo('Modules\Core\Entities\User', 'id', 'author_id');
     }
 
     public function scopePublished($query)
