@@ -17,5 +17,9 @@ Route::group([
     'middleware' => ['auth', 'verified'],
 ],
 function() {
-    Route::get('/menu-builder', 'MenuBuilderController@index');
+    Route::get('/menus', 'MenuBuilderController@index');
+    Route::get('/menus/{id}/edit', 'MenuBuilderController@edit');
+    Route::put('/menus/{id}/update', 'MenuBuilderController@update');
+    Route::delete('/menus/{id}/destroy', 'MenuBuilderController@delete');
+    Route::get('/menus/{id}/builder', 'MenuBuilderController@builder');
 });
