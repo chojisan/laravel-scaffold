@@ -75,7 +75,13 @@
                   <i class="ni ni-book-bookmark text-green"></i>
                   <span class="nav-link-text">Pages</span>
                 </a>
-              </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/backend/menus">
+                  <i class="ni ni-book-bookmark text-green"></i>
+                  <span class="nav-link-text">Menu builder</span>
+                </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
                 <i class="ni ni-ui-04 text-info"></i>
@@ -83,9 +89,9 @@
               </a>
               <div class="collapse" id="navbar-components">
                 <ul class="nav nav-sm flex-column">
-                  <li class="nav-item">
+                  <!--<li class="nav-item">
                     <a href="../../pages/components/buttons.html" class="nav-link">Menu Builder</a>
-                  </li>
+                  </li>-->
                   <li class="nav-item">
                     <a href="../../pages/components/cards.html" class="nav-link">Database</a>
                   </li>
