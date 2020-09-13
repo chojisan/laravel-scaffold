@@ -1,4 +1,4 @@
-window._ = require('lodash');
+window._ = require("lodash");
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -7,11 +7,11 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
+  window.Popper = require("popper.js").default;
+  window.$ = window.jQuery = require("jquery");
 
-    require('bootstrap');
-    const swal = window.swal = require('sweetalert2');
+  require("bootstrap");
+  const swal = (window.swal = require("sweetalert2"));
 } catch (e) {}
 
 /**
@@ -20,14 +20,13 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+window.axios = require("axios");
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
-
-window.moment = require('moment');
-window.chartjs = require('chart.js');
-const Cookies = require('js-cookie');
+window.moment = require("moment");
+window.chartjs = require("chart.js");
+const Cookies = require("js-cookie");
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -47,140 +46,171 @@ const Cookies = require('js-cookie');
 // });
 
 // Argon
-'use strict';
+("use strict");
 
 var Layout = (function() {
+  function pinSidenav() {
+    $(".sidenav-toggler").addClass("active");
+    $(".sidenav-toggler").data("action", "sidenav-unpin");
+    $("body")
+      .removeClass("g-sidenav-hidden")
+      .addClass("g-sidenav-show g-sidenav-pinned");
+    $("body").append(
+      '<div class="backdrop d-xl-none" data-action="sidenav-unpin" data-target=' +
+        $("#sidenav-main").data("target") +
+        " />"
+    );
 
-    function pinSidenav() {
-        $('.sidenav-toggler').addClass('active');
-        $('.sidenav-toggler').data('action', 'sidenav-unpin');
-        $('body').removeClass('g-sidenav-hidden').addClass('g-sidenav-show g-sidenav-pinned');
-        $('body').append('<div class="backdrop d-xl-none" data-action="sidenav-unpin" data-target='+$('#sidenav-main').data('target')+' />');
+    // Store the sidenav state in a cookie session
+    Cookies.set("sidenav-state", "pinned");
+  }
 
-        // Store the sidenav state in a cookie session
-        Cookies.set('sidenav-state', 'pinned');
+  function unpinSidenav() {
+    $(".sidenav-toggler").removeClass("active");
+    $(".sidenav-toggler").data("action", "sidenav-pin");
+    $("body")
+      .removeClass("g-sidenav-pinned")
+      .addClass("g-sidenav-hidden");
+    $("body")
+      .find(".backdrop")
+      .remove();
+
+    // Store the sidenav state in a cookie session
+    Cookies.set("sidenav-state", "unpinned");
+  }
+
+  // Set sidenav state from cookie
+
+  var $sidenavState = Cookies.get("sidenav-state")
+    ? Cookies.get("sidenav-state")
+    : "pinned";
+
+  if ($(window).width() > 1200) {
+    if ($sidenavState == "pinned") {
+      pinSidenav();
     }
 
-    function unpinSidenav() {
-        $('.sidenav-toggler').removeClass('active');
-        $('.sidenav-toggler').data('action', 'sidenav-pin');
-        $('body').removeClass('g-sidenav-pinned').addClass('g-sidenav-hidden');
-        $('body').find('.backdrop').remove();
-
-        // Store the sidenav state in a cookie session
-        Cookies.set('sidenav-state', 'unpinned');
+    if (Cookies.get("sidenav-state") == "unpinned") {
+      unpinSidenav();
     }
 
-    // Set sidenav state from cookie
+    $(window).resize(function() {
+      if (
+        $("body").hasClass("g-sidenav-show") &&
+        !$("body").hasClass("g-sidenav-pinned")
+      ) {
+        $("body")
+          .removeClass("g-sidenav-show")
+          .addClass("g-sidenav-hidden");
+      }
+    });
+  }
 
-    var $sidenavState = Cookies.get('sidenav-state') ? Cookies.get('sidenav-state') : 'pinned';
+  if ($(window).width() < 1200) {
+    $("body")
+      .removeClass("g-sidenav-hide")
+      .addClass("g-sidenav-hidden");
+    $("body").removeClass("g-sidenav-show");
+    $(window).resize(function() {
+      if (
+        $("body").hasClass("g-sidenav-show") &&
+        !$("body").hasClass("g-sidenav-pinned")
+      ) {
+        $("body")
+          .removeClass("g-sidenav-show")
+          .addClass("g-sidenav-hidden");
+      }
+    });
+  }
 
-    if($(window).width() > 1200) {
-        if($sidenavState == 'pinned') {
-            pinSidenav()
-        }
+  $("body").on("click", "[data-action]", function(e) {
+    e.preventDefault();
 
-        if(Cookies.get('sidenav-state') == 'unpinned') {
-            unpinSidenav()
-        }
+    var $this = $(this);
+    var action = $this.data("action");
+    var target = $this.data("target");
 
-        $(window).resize(function() {
-            if( $('body').hasClass('g-sidenav-show') && !$('body').hasClass('g-sidenav-pinned')) {
-                $('body').removeClass('g-sidenav-show').addClass('g-sidenav-hidden');
-            }
-        })
+    // Manage actions
+
+    switch (action) {
+      case "sidenav-pin":
+        pinSidenav();
+        break;
+
+      case "sidenav-unpin":
+        unpinSidenav();
+        break;
+
+      case "search-show":
+        target = $this.data("target");
+        $("body")
+          .removeClass("g-navbar-search-show")
+          .addClass("g-navbar-search-showing");
+
+        setTimeout(function() {
+          $("body")
+            .removeClass("g-navbar-search-showing")
+            .addClass("g-navbar-search-show");
+        }, 150);
+
+        setTimeout(function() {
+          $("body").addClass("g-navbar-search-shown");
+        }, 300);
+        break;
+
+      case "search-close":
+        target = $this.data("target");
+        $("body").removeClass("g-navbar-search-shown");
+
+        setTimeout(function() {
+          $("body")
+            .removeClass("g-navbar-search-show")
+            .addClass("g-navbar-search-hiding");
+        }, 150);
+
+        setTimeout(function() {
+          $("body")
+            .removeClass("g-navbar-search-hiding")
+            .addClass("g-navbar-search-hidden");
+        }, 300);
+
+        setTimeout(function() {
+          $("body").removeClass("g-navbar-search-hidden");
+        }, 500);
+        break;
     }
+  });
 
-    if($(window).width() < 1200){
-      $('body').removeClass('g-sidenav-hide').addClass('g-sidenav-hidden');
-      $('body').removeClass('g-sidenav-show');
-      $(window).resize(function() {
-          if( $('body').hasClass('g-sidenav-show') && !$('body').hasClass('g-sidenav-pinned')) {
-              $('body').removeClass('g-sidenav-show').addClass('g-sidenav-hidden');
-          }
-      })
+  // Add sidenav modifier classes on mouse events
+
+  $(".sidenav").on("mouseenter", function() {
+    if (!$("body").hasClass("g-sidenav-pinned")) {
+      $("body")
+        .removeClass("g-sidenav-hide")
+        .removeClass("g-sidenav-hidden")
+        .addClass("g-sidenav-show");
     }
+  });
 
+  $(".sidenav").on("mouseleave", function() {
+    if (!$("body").hasClass("g-sidenav-pinned")) {
+      $("body")
+        .removeClass("g-sidenav-show")
+        .addClass("g-sidenav-hide");
 
+      setTimeout(function() {
+        $("body")
+          .removeClass("g-sidenav-hide")
+          .addClass("g-sidenav-hidden");
+      }, 300);
+    }
+  });
 
-    $("body").on("click", "[data-action]", function(e) {
-
-        e.preventDefault();
-
-        var $this = $(this);
-        var action = $this.data('action');
-        var target = $this.data('target');
-
-
-        // Manage actions
-
-        switch (action) {
-            case 'sidenav-pin':
-                pinSidenav();
-            break;
-
-            case 'sidenav-unpin':
-                unpinSidenav();
-            break;
-
-            case 'search-show':
-                target = $this.data('target');
-                $('body').removeClass('g-navbar-search-show').addClass('g-navbar-search-showing');
-
-                setTimeout(function() {
-                    $('body').removeClass('g-navbar-search-showing').addClass('g-navbar-search-show');
-                }, 150);
-
-                setTimeout(function() {
-                    $('body').addClass('g-navbar-search-shown');
-                }, 300)
-            break;
-
-            case 'search-close':
-                target = $this.data('target');
-                $('body').removeClass('g-navbar-search-shown');
-
-                setTimeout(function() {
-                    $('body').removeClass('g-navbar-search-show').addClass('g-navbar-search-hiding');
-                }, 150);
-
-                setTimeout(function() {
-                    $('body').removeClass('g-navbar-search-hiding').addClass('g-navbar-search-hidden');
-                }, 300);
-
-                setTimeout(function() {
-                    $('body').removeClass('g-navbar-search-hidden');
-                }, 500);
-            break;
-        }
-    })
-
-
-    // Add sidenav modifier classes on mouse events
-
-    $('.sidenav').on('mouseenter', function() {
-        if(! $('body').hasClass('g-sidenav-pinned')) {
-            $('body').removeClass('g-sidenav-hide').removeClass('g-sidenav-hidden').addClass('g-sidenav-show');
-        }
-    })
-
-    $('.sidenav').on('mouseleave', function() {
-        if(! $('body').hasClass('g-sidenav-pinned')) {
-            $('body').removeClass('g-sidenav-show').addClass('g-sidenav-hide');
-
-            setTimeout(function() {
-                $('body').removeClass('g-sidenav-hide').addClass('g-sidenav-hidden');
-            }, 300);
-        }
-    })
-
-
-    // Make the body full screen size if it has not enough content inside
-    $(window).on('load resize', function() {
-        if($('body').height() < 800) {
-            $('body').css('min-height', '100vh');
-            $('#footer-main').addClass('footer-auto-bottom')
-        }
-    })
-
+  // Make the body full screen size if it has not enough content inside
+  $(window).on("load resize", function() {
+    if ($("body").height() < 800) {
+      $("body").css("min-height", "100vh");
+      $("#footer-main").addClass("footer-auto-bottom");
+    }
+  });
 })();
