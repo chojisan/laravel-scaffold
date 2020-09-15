@@ -1,4 +1,4 @@
-window._ = require("lodash");
+//window._ = require("lodash");
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -7,11 +7,10 @@ window._ = require("lodash");
  */
 
 try {
-  window.Popper = require("popper.js").default;
-  window.$ = window.jQuery = require("jquery");
-
-  require("bootstrap");
-  const swal = (window.swal = require("sweetalert2"));
+  //window.Popper = require("popper.js").default;
+  //window.$ = window.jQuery = require("jquery");
+  //require("bootstrap");
+  //const swal = (window.swal = require("sweetalert2"));
 } catch (e) {}
 
 /**
@@ -24,9 +23,9 @@ window.axios = require("axios");
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
-window.moment = require("moment");
-window.chartjs = require("chart.js");
-const Cookies = require("js-cookie");
+//window.moment = require("moment");
+//window.chartjs = require("chart.js");
+//const Cookies = require("js-cookie");
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -46,7 +45,7 @@ const Cookies = require("js-cookie");
 // });
 
 // Argon
-("use strict");
+/* ("use strict");
 
 var Layout = (function() {
   function pinSidenav() {
@@ -214,3 +213,4 @@ var Layout = (function() {
     }
   });
 })();
+ */

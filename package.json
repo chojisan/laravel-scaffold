@@ -39,6 +39,7 @@
         "nouislider": "^14.6.1",
         "sweetalert2": "^9.17.2",
         "vue-chartjs": "^3.5.1",
+        "vue-meta": "^2.4.0",
         "vue-router": "^3.4.3",
         "vue2-transitions": "^0.3.0",
         "vuedraggable": "^2.24.1",
