@@ -38,6 +38,11 @@ class Article extends Model
         return $this->belongsTo('Modules\Core\Entities\User', 'id', 'author_id');
     }
 
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);
+    }
+
     public function scopePublished($query)
     {
         return $query->where('status', 'published');
