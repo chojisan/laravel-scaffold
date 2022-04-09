@@ -28,7 +28,7 @@
         "animate.css": "^4.1.0",
         "chart.js": "^2.9.3",
         "js-cookie": "^2.2.1",
-        "moment": "^2.25.3",
+        "moment": "^2.29.2",
         "nouislider": "^14.5.0",
         "sweetalert2": "^9.10.13",
         "vue-chartjs": "^3.5.0",
